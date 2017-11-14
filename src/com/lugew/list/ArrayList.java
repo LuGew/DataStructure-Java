@@ -1,5 +1,10 @@
 package com.lugew.list;
-
+/**
+ * 
+ * @author LuGew
+ * @version 2017.11.14
+ * @param <E>
+ */
 public class ArrayList<E> extends AbstractList<E> {
 	private static final int INIT_CAPACITY = 16;
 	@SuppressWarnings("unchecked")
