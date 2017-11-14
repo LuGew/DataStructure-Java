@@ -1,4 +1,5 @@
 package com.lugew.list;
+
 /**
  * 
  * @author LuGew
@@ -91,6 +92,9 @@ public class ArrayList<E> extends AbstractList<E> {
 		size = 0;
 	}
 
+	/**
+	 *  Trim this list to real size
+	 */
 	public void trimToSize() {
 		if (size != data.length) {
 			@SuppressWarnings("unchecked")
@@ -100,11 +104,11 @@ public class ArrayList<E> extends AbstractList<E> {
 		}
 	}
 
-	public String toString(){
+	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder("[");
-		for(int i=0;i<size;i++){
+		for (int i = 0; i < size; i++) {
 			stringBuilder.append(data[i]);
-			if(i<size-1)
+			if (i < size - 1)
 				stringBuilder.append(", ");
 		}
 		return stringBuilder.append("]").toString();
