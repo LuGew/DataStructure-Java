@@ -24,13 +24,12 @@ public class OrderedArray {
             currentIndex = (lowerBound + upperBound) / 2;
             if (array[currentIndex] == searchKey) {
                 return currentIndex;
+            } else if (array[currentIndex] > searchKey) {
+                upperBound = currentIndex - 1;
             } else {
-                if (array[currentIndex] > searchKey) {
-                    upperBound = currentIndex - 1;
-                } else {
-                    lowerBound = currentIndex + 1;
-                }
+                lowerBound = currentIndex + 1;
             }
+
         }
         return elements;
     }
@@ -46,6 +45,7 @@ public class OrderedArray {
         array[j] = value;
         elements++;
     }
+
 
     public boolean delete(long value) {
         int index = find(value);
@@ -66,6 +66,31 @@ public class OrderedArray {
         }
         System.out.println();
 
+    }
+
+    public void merge(long[] arrayOne, long[] arrayTwo) {
+        int lengthOne = arrayOne.length;
+        int lengthTwo = arrayTwo.length;
+        long[] arrayTemp = new long[lengthOne + lengthTwo];
+        int indexOne = 0;
+        int indexTwo = 0;
+        int index = 0;
+        while (indexOne < lengthOne || indexTwo < lengthTwo) {
+            if (indexOne >= lengthOne) {
+                arrayTemp[index++] = arrayTwo[indexTwo++];
+            } else if (indexTwo >= lengthTwo) {
+                arrayTemp[index++] = arrayOne[indexOne++];
+            } else {
+                if (arrayOne[indexOne] < arrayTwo[indexTwo]) {
+                    arrayTemp[index++] = arrayOne[indexOne++];
+                } else {
+                    arrayTemp[index++] = arrayTwo[indexTwo++];
+
+                }
+            }
+        }
+        array = arrayTemp;
+        elements = array.length;
     }
 
     public int size() {
@@ -98,6 +123,11 @@ public class OrderedArray {
         orderedArray.delete(55);
         orderedArray.delete(99);
 
+        orderedArray.display();
+
+        long[] arrayOne = new long[]{1, 2, 3, 4, 5, 6};
+        long[] arrayTwo = new long[]{2, 3, 4, 5, 6, 7, 8};
+        orderedArray.merge(arrayOne, arrayTwo);
         orderedArray.display();
     }
 }
