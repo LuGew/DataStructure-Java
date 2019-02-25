@@ -85,7 +85,6 @@ public class OrderedArray {
                     arrayTemp[index++] = arrayOne[indexOne++];
                 } else {
                     arrayTemp[index++] = arrayTwo[indexTwo++];
-
                 }
             }
         }
