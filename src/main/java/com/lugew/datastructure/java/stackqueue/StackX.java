@@ -2,24 +2,24 @@ package com.lugew.datastructure.java.stackqueue;
 
 public class StackX {
     private int maxSize;
-    private long[] stackArray;
+    private char[] stackArray;
     private int top;
 
     public StackX(int maxSize) {
         this.maxSize = maxSize;
-        stackArray = new long[maxSize];
+        stackArray = new char[maxSize];
         top = -1;
     }
 
-    public void push(long value) {
+    public void push(char value) {
         stackArray[++top] = value;
     }
 
-    public long pop() {
+    public char pop() {
         return stackArray[top--];
     }
 
-    public long peek() {
+    public char peek() {
         return stackArray[top];
     }
 
@@ -32,7 +32,7 @@ public class StackX {
     }
 
     public static void main(String[] args) {
-        StackX theStack = new StackX(10);
+      /*  StackX theStack = new StackX(10);
         theStack.push(20);
         theStack.push(40);
         theStack.push(60);
@@ -42,7 +42,7 @@ public class StackX {
             System.out.print(value);
             System.out.print(" ");
         }
-        System.out.println();
+        System.out.println();*/
 
     }
 }
