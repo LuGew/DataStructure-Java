@@ -27,8 +27,26 @@ public class StackX {
         return top == maxSize - 1;
     }
 
+    public char peekN(int index) {
+        return stackArray[index];
+    }
+
     public boolean isEmpty() {
         return top == -1;
+    }
+
+    public int size() {
+        return top + 1;
+    }
+
+    public void displayStack(String s) {
+        System.out.print(s);
+        System.out.print("Stack (bottom-->top): ");
+        for (int i = 0; i <size(); i++) {
+            System.out.print(peekN(i));
+            System.out.print(" ");
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
