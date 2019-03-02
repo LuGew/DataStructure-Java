@@ -1,4 +1,4 @@
-package com.lugew.datastructure.java.stackqueue;
+package com.lugew.datastructure.java.stackqueue.study;
 
 public class StackX {
     private int maxSize;

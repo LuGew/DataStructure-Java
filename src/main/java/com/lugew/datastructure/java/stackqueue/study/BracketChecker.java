@@ -1,4 +1,4 @@
-package com.lugew.datastructure.java.stackqueue;
+package com.lugew.datastructure.java.stackqueue.study;
 
 import java.io.BufferedReader;
 import java.io.IOException;
