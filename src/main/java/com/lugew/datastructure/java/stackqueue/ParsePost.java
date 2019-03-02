@@ -1,5 +1,9 @@
 package com.lugew.datastructure.java.stackqueue;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class ParsePost {
     private Stack stack;
     private String input;
@@ -44,13 +48,27 @@ public class ParsePost {
         return interAns;
     }
 
-    public static void main(String[] args) {
-        String input ;
+    public static void main(String[] args) throws IOException {
+        String input;
         int output;
         while (true) {
             System.out.print("Enter postfix: ");
             System.out.flush();
+            input = getString();
+            if (input.equals("")) {
+                break;
+            }
+            ParsePost parsePost = new ParsePost(input);
+            output = parsePost.doParse();
+            System.out.println("Evaluates to " + output);
         }
+    }
+
+    public static String getString() throws IOException {
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        String s = bufferedReader.readLine();
+        return s;
     }
 }
 

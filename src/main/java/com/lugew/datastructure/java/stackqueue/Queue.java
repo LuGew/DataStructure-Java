@@ -49,8 +49,26 @@ public class Queue {
         }
     }
 
+    public void display() {
+        if (!isEmpty()) {
+            if (rear >= front) {
+                for (int i = front; i <= rear; i++) {
+                    System.out.print(queueArray[i] + " ");
+                }
+            } else {
+                for (int i = front; i < maxSize; i++) {
+                    System.out.print(queueArray[i] + " ");
+                }
+                for (int i = 0; i <= rear; i++) {
+                    System.out.print(queueArray[i] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
-        Queue queue = new Queue(5);
+       /* Queue queue = new Queue(5);
         queue.insert(10);
         queue.insert(20);
         queue.insert(30);
@@ -70,7 +88,29 @@ public class Queue {
             System.out.print(" ");
 
         }
-        System.out.println();
+        System.out.println();*/
+
+        Queue queue = new Queue(10);
+        queue.insert(10);
+        queue.insert(20);
+        queue.insert(30);
+        queue.insert(40);
+
+       /* queue.remove();
+        queue.remove();
+        queue.remove();*/
+        queue.insert(50);
+        queue.insert(60);
+        queue.insert(70);
+        queue.insert(80);
+        queue.display();
+        queue.remove();
+        queue.remove();
+        queue.remove();
+        queue.insert(1);
+        queue.insert(2);
+        queue.insert(3);
+        queue.display();
 
     }
 }
