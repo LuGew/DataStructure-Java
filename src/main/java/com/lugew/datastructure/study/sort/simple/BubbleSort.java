@@ -6,34 +6,10 @@ package com.lugew.datastructure.study.sort.simple;
  * <p>
  * 不变性：下标大于等于elements-i-1的数据有序不变
  */
-public class BubbleSort {
-    private long[] array;
-    private int elements;
+public class BubbleSort<T extends Comparable<T>> extends AbstractSort<T> {
 
-    public BubbleSort(int size) {
-        this.array = new long[size];
-        this.elements = 0;
-    }
-
-    public void insert(long value) {
-        array[elements++] = value;
-    }
-
-    public void display() {
-        for (int i = 0; i < elements; i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.println();
-    }
-
-    public void sort() {
-        for (int i = 0; i < elements - 1; i++) {
-            for (int j = 0; j < elements - 1 - i; j++) {
-                if (array[j] > array[j + 1]) {
-                    swap(j, j + 1);
-                }
-            }
-        }
+    public BubbleSort(T[] array) {
+        super(array);
     }
 
     public int oddEvenSort() {
@@ -41,14 +17,14 @@ public class BubbleSort {
         boolean flag = false;
         while (!flag) {
             flag = true;
-            for (int i = 1; i + 1 < elements; i += 2) {
-                if (array[i] > array[i + 1]) {
+            for (int i = 1; i + 1 < size; i += 2) {
+                if (isBigger(i, i + 1)) {
                     flag = false;
                     swap(i, i + 1);
                 }
             }
-            for (int i = 0; i + 1 < elements; i += 2) {
-                if (array[i] > array[i + 1]) {
+            for (int i = 0; i + 1 < size; i += 2) {
+                if (isBigger(i, i + 1)) {
                     flag = false;
                     swap(i, i + 1);
                 }
@@ -60,19 +36,19 @@ public class BubbleSort {
 
     public void sortTwo() {
         int left = 0;
-        int right = elements - 1;
+        int right = size - 1;
         int i = 0;
         while (left < right) {
             if (i++ % 2 == 0) {
                 for (int j = 0; j < right; j++) {
-                    if (array[j] > array[j + 1]) {
+                    if (isBigger(j, j + 1)) {
                         swap(j, j + 1);
                     }
                 }
                 right--;
             } else {
                 for (int j = right; j > left; j--) {
-                    if (array[j] < array[j - 1]) {
+                    if (isBigger(j, j + 1)) {
                         swap(j, j - 1);
                     }
                 }
@@ -81,59 +57,14 @@ public class BubbleSort {
         }
     }
 
-    private void swap(int j, int i) {
-        long temp = array[j];
-        array[j] = array[i];
-        array[i] = temp;
-    }
-
-    public static void main(String[] args) {
-        //int max = 100000;
-        int max = 10;
-        BubbleSort bubbleSort = new BubbleSort(max);
-       /*  SelectSort selectSort = new SelectSort(max);
-        InsertSort insertSort = new InsertSort(max);
-        for (int i = 0; i < max; i++) {
-//            long n = (long) (Math.random() * (max - 1));
-//            long n = i;
-            long n = max - i - 1;
-            bubbleSort.insert(n);
-            selectSort.insert(n);
-            insertSort.insert(n);
-        }*/
-
-        bubbleSort.insert(77);
-        bubbleSort.insert(99);
-        bubbleSort.insert(44);
-        bubbleSort.insert(55);
-        bubbleSort.insert(22);
-        bubbleSort.insert(88);
-        bubbleSort.insert(11);
-        bubbleSort.insert(00);
-        bubbleSort.insert(66);
-        bubbleSort.insert(33);
-        bubbleSort.display();
-//        bubbleSort.sortTwo();
-        System.out.println(bubbleSort.oddEvenSort());
-
-        bubbleSort.display();
-        /*long start = System.currentTimeMillis();
-        bubbleSort.sort();
-        long end = System.currentTimeMillis();
-        System.out.println("Bubble Sort: " + (end - start) + "ms");
-
-
-        start = System.currentTimeMillis();
-        selectSort.sort();
-        end = System.currentTimeMillis();
-        System.out.println("Select Sort: " + (end - start) + "ms");
-
-
-        start = System.currentTimeMillis();
-        insertSort.sort();
-        end = System.currentTimeMillis();
-        System.out.println("Insert Sort: " + (end - start) + "ms");
-*/
-
+    public T[] sort() {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - 1 - i; j++) {
+                if (isBigger(j, j + 1)) {
+                    swap(j, j + 1);
+                }
+            }
+        }
+        return array;
     }
 }
