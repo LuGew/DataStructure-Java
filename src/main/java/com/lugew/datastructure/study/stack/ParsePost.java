@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ParsePost {
-    private Stack stack;
+    private StackS stack;
     private String input;
 
     public ParsePost(String input) {
@@ -13,7 +13,7 @@ public class ParsePost {
     }
 
     public int doParse() {
-        stack = new Stack(20);
+        stack = new StackS(20);
         char ch;
         int j;
         int num1, num2, interAns;
@@ -73,12 +73,12 @@ public class ParsePost {
 }
 
 
-class Stack {
+class StackS {
     private int maxSize;
     private int[] stackArray;
     private int top;
 
-    public Stack(int maxSize) {
+    public StackS(int maxSize) {
         this.maxSize = maxSize;
         stackArray = new int[maxSize];
         top = -1;
