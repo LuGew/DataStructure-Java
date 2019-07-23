@@ -1,19 +1,24 @@
 package com.lugew.datastructure.study.queue;
 
-public class PriorityQueue {
+/**
+ * 数组实现的优先队列
+ *
+ * @param <T> 泛型
+ */
+public class PriorityQueue<T extends Comparable<T>> {
     private int maxSize;
-    private long[] queueArray;
+    private T[] queueArray;
     private int elements;
 
     public PriorityQueue(int maxSize) {
         this.maxSize = maxSize;
-        queueArray = new long[maxSize];
+        queueArray = (T[]) new Object[maxSize];
         elements = 0;
     }
 
-    public void insert(long item) {
+    public void insert(T item) {
         int j = elements;
-        while (j - 1 >= 0 && queueArray[j - 1] < item) {
+        while (j - 1 >= 0 && queueArray[j - 1].compareTo(item) < 0) {
             queueArray[j] = queueArray[j - 1];
             j--;
         }
@@ -21,11 +26,11 @@ public class PriorityQueue {
         elements++;
     }
 
-    public long remove() {
+    public T remove() {
         return queueArray[--elements];
     }
 
-    public long peekMin() {
+    public T peekMin() {
         return queueArray[elements - 1];
     }
 
@@ -35,21 +40,5 @@ public class PriorityQueue {
 
     public boolean isFull() {
         return elements == maxSize;
-    }
-
-    public static void main(String[] args) {
-        PriorityQueue priorityQueue = new PriorityQueue(5);
-        priorityQueue.insert(30);
-        priorityQueue.insert(50);
-        priorityQueue.insert(10);
-        priorityQueue.insert(40);
-        priorityQueue.insert(20);
-
-        while (!priorityQueue.isEmpty()) {
-            long item = priorityQueue.remove();
-            System.out.print(item + "　");
-        }
-        System.out.println();
-
     }
 }

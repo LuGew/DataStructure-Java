@@ -1,7 +1,14 @@
 package com.lugew.datastructure.study.stack;
 
-public class Stack<T> {
-    public static final int CAPACITY = 50;
+import com.lugew.datastructure.study.common.Display;
+
+/**
+ * 栈
+ *
+ * @param <T> 泛型
+ */
+public class Stack<T> implements Display {
+    private static final int CAPACITY = 50;
     private int maxSize;
     private T[] array;
     private int index;
@@ -32,6 +39,13 @@ public class Stack<T> {
         return null;
     }
 
+    public T peek(int index) {
+        if (index >= 0 && index <= this.index) {
+            return array[index];
+        }
+        return null;
+    }
+
     public void push(T value) {
         if (!isFull()) {
             array[++index] = value;
@@ -48,5 +62,14 @@ public class Stack<T> {
 
     public boolean isFull() {
         return index == maxSize - 1;
+    }
+
+    public void display() {
+        System.out.print("Stack (bottom-->top): ");
+        for (int i = 0; i < size(); i++) {
+            System.out.print(peek(i));
+            System.out.print(" ");
+        }
+        System.out.println();
     }
 }

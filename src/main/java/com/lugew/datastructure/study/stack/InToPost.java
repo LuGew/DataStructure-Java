@@ -1,57 +1,52 @@
 package com.lugew.datastructure.study.stack;
 
-import com.lugew.datastructure.study.stack.StackX;
-
 public class InToPost {
-    private StackX stackX;
-    private String input;
-    private String output;
+    private Stack<Character> stack;
+    private StringBuilder output = new StringBuilder();
 
-    public InToPost(String input) {
-        this.input = input;
+    public String transfer(String input) {
         int stackSize = input.length();
-        stackX = new StackX(stackSize);
-    }
-
-    public String doTrans() {
-        for (int i = 0; i < input.length(); i++) {
+        stack = new Stack<Character>(stackSize);
+        output = new StringBuilder();
+        for (int i = 0; i < stackSize; i++) {
             char ch = input.charAt(i);
-            stackX.displayStack("For " + ch + " ");
+            System.out.print("For " + ch + " ");
+            stack.display();
             switch (ch) {
                 case '+':
                 case '-':
-                    gotOper(ch, 1);
+                    getOperator(ch, 1);
                     break;
                 case '*':
                 case '/':
-                    gotOper(ch, 2);
+                    getOperator(ch, 2);
                     break;
                 case '(':
-                    stackX.push(ch);
+                    stack.push(ch);
                     break;
                 case ')':
-                    gotParen(ch);
+                    getParent(ch);
                     break;
                 default:
-                    output = output + ch;
+                    output.append(ch);
                     break;
 
             }
         }
 
-        while (!stackX.isEmpty()) {
-            stackX.displayStack("While ");
-            output = output + stackX.pop();
+        while (!stack.isEmpty()) {
+            stack.display();
+            output.append(stack.pop());
         }
-        stackX.displayStack("End ");
-        return output;
+        stack.display();
+        return output.toString();
     }
 
-    public void gotOper(char opThis, int prec1) {
-        while (!stackX.isEmpty()) {
-            char opTop = stackX.pop();
+    private void getOperator(char opThis, int prec1) {
+        while (!stack.isEmpty()) {
+            char opTop = stack.pop();
             if (opTop == '(') {
-                stackX.push(opTop);
+                stack.push(opTop);
                 break;
             } else {
                 int prec2;
@@ -61,30 +56,27 @@ public class InToPost {
                     prec2 = 2;
                 }
                 if (prec2 < prec1) {
-                    stackX.push(opTop);
+                    stack.push(opTop);
                     break;
                 } else {
-                    output = output + opTop;
+                    output.append(opTop);
                 }
 
             }
 
         }
-        stackX.push(opThis);
+        stack.push(opThis);
     }
 
-    public void gotParen(char ch) {
-        while (!stackX.isEmpty()) {
-            char chx = stackX.pop();
+
+    public void getParent(char ch) {
+        while (!stack.isEmpty()) {
+            char chx = stack.pop();
             if (chx == '(') {
                 break;
             } else {
-                output = output + chx;
+                output.append(chx);
             }
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 }

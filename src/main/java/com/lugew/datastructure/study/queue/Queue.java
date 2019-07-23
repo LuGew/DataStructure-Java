@@ -1,36 +1,42 @@
 package com.lugew.datastructure.study.queue;
 
-public class Queue {
+import com.lugew.datastructure.study.common.Display;
+
+/**
+ * 循环队列
+ *
+ * @author LuGew
+ */
+public class Queue<T> implements Display {
     private int maxSize;
-    private long[] queueArray;
+    private T[] array;
     private int front;
     private int rear;
 
     public Queue(int maxSize) {
         this.maxSize = maxSize + 1;
-        queueArray = new long[this.maxSize];
+        array = (T[]) new Object[this.maxSize];
         front = 0;
         rear = -1;
-
     }
 
-    public void insert(long value) {
+    public void insert(T value) {
         if (rear == maxSize - 1) {
             rear = -1;
         }
-        queueArray[++rear] = value;
+        array[++rear] = value;
     }
 
-    public long remove() {
-        long temp = queueArray[front++];
+    public T remove() {
+        T temp = array[front++];
         if (front == maxSize) {
             front = 0;
         }
         return temp;
     }
 
-    public long peekFront() {
-        return queueArray[front];
+    public T peekFront() {
+        return array[front];
     }
 
     public boolean isEmpty() {
@@ -53,64 +59,17 @@ public class Queue {
         if (!isEmpty()) {
             if (rear >= front) {
                 for (int i = front; i <= rear; i++) {
-                    System.out.print(queueArray[i] + " ");
+                    System.out.print(array[i] + " ");
                 }
             } else {
                 for (int i = front; i < maxSize; i++) {
-                    System.out.print(queueArray[i] + " ");
+                    System.out.print(array[i] + " ");
                 }
                 for (int i = 0; i <= rear; i++) {
-                    System.out.print(queueArray[i] + " ");
+                    System.out.print(array[i] + " ");
                 }
             }
             System.out.println();
         }
-    }
-
-    public static void main(String[] args) {
-       /* Queue queue = new Queue(5);
-        queue.insert(10);
-        queue.insert(20);
-        queue.insert(30);
-        queue.insert(40);
-
-        queue.remove();
-        queue.remove();
-        queue.remove();
-        queue.insert(50);
-        queue.insert(60);
-        queue.insert(70);
-        queue.insert(80);
-
-        while (!queue.isEmpty()) {
-            long n = queue.remove();
-            System.out.print(n);
-            System.out.print(" ");
-
-        }
-        System.out.println();*/
-
-        Queue queue = new Queue(10);
-        queue.insert(10);
-        queue.insert(20);
-        queue.insert(30);
-        queue.insert(40);
-
-       /* queue.remove();
-        queue.remove();
-        queue.remove();*/
-        queue.insert(50);
-        queue.insert(60);
-        queue.insert(70);
-        queue.insert(80);
-        queue.display();
-        queue.remove();
-        queue.remove();
-        queue.remove();
-        queue.insert(1);
-        queue.insert(2);
-        queue.insert(3);
-        queue.display();
-
     }
 }
