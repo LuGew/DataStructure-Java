@@ -2,6 +2,7 @@ package com.lugew.datastructure.study.queue;
 
 /**
  * 数组实现的优先队列
+ * 复杂度分析:insert:O(N),remove:O(1),peekMin(1)
  *
  * @param <T> 泛型
  */

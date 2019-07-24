@@ -5,6 +5,7 @@ import com.lugew.datastructure.study.common.Queue;
 
 /**
  * 循环队列
+ * 复杂度分析:insert:O(1),remove:O(1)
  *
  * @author LuGew
  */
@@ -36,9 +37,6 @@ public class ArrayQueue<T> implements Queue<T>, Display {
         return temp;
     }
 
-    public T peekFront() {
-        return array[front];
-    }
 
     public boolean isEmpty() {
         return (rear + 1 == front) || (front + maxSize - 1 == rear);

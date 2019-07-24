@@ -3,7 +3,11 @@ package com.lugew.datastructure.study.linkedList;
 import com.lugew.datastructure.study.common.Display;
 import com.lugew.datastructure.study.common.List;
 
-
+/**
+ * 单链表
+ *
+ * @param <T>
+ */
 public class LinkedList<T> implements List<T>, Display {
     private Node<T> first;
     private int size;
@@ -24,7 +28,7 @@ public class LinkedList<T> implements List<T>, Display {
     public T remove(T element) {
         Node<T> previous = first;
         Node<T> current = first;
-        while (current.element.equals(element)) {
+        while (!current.element.equals(element)) {
             if (current.next == null) {
                 return null;
             } else {
@@ -82,7 +86,7 @@ public class LinkedList<T> implements List<T>, Display {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
 
@@ -101,7 +105,7 @@ public class LinkedList<T> implements List<T>, Display {
         private T element;
         private Node<T> next;
 
-        public Node(T element) {
+        Node(T element) {
             this.element = element;
         }
 

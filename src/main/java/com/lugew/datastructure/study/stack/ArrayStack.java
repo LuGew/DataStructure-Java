@@ -4,6 +4,7 @@ import com.lugew.datastructure.study.common.Stack;
 
 /**
  * 栈
+ * 复杂度分析:pop:O(1),peek:O(1),push:O(1)
  *
  * @param <T> 泛型
  */
