@@ -14,7 +14,10 @@ public class LinkedList<T> implements List<T>, Display {
 
     @Override
     public void add(T element) {
-
+        Node<T> newNode = new Node<>(element);
+        newNode.next = first;
+        first = newNode;
+        size++;
     }
 
     @Override
@@ -34,6 +37,7 @@ public class LinkedList<T> implements List<T>, Display {
         } else {
             previous.next = current.next;
         }
+        size--;
         return current.element;
     }
 
@@ -66,7 +70,9 @@ public class LinkedList<T> implements List<T>, Display {
 
     @Override
     public T remove(int index) {
-        return null;
+        Node<T> temp = first;
+        first = first.next;
+        return temp.element;
     }
 
     public boolean isEmpty() {
@@ -79,17 +85,6 @@ public class LinkedList<T> implements List<T>, Display {
         return 0;
     }
 
-    public void insertFirst(T element) {
-        Node<T> newNode = new Node<>(element);
-        newNode.next = first;
-        first = newNode;
-    }
-
-    public Node<T> deleteFirst() {
-        Node<T> temp = first;
-        first = first.next;
-        return temp;
-    }
 
     @Override
     public void display() {
