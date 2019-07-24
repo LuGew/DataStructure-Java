@@ -1,8 +1,10 @@
 package com.lugew.datastructure.study.stack;
 
+import com.lugew.datastructure.study.common.Stack;
+
 public class ParsePost {
     public static int parse(String input) {
-        Stack<Integer> stack = new Stack<Integer>(20);
+        Stack<Integer> stack = new ArrayStack<Integer>(20);
         char ch;
         int j;
         int num1, num2, result;

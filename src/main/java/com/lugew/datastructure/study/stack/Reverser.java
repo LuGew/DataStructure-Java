@@ -1,12 +1,14 @@
 package com.lugew.datastructure.study.stack;
 
+import com.lugew.datastructure.study.common.Stack;
+
 /**
  * 栈实现的字符串反转
  */
 public class Reverser {
     public static String reverse(String input) {
         int stackSize = input.length();
-        Stack<Character> stack = new Stack<Character>(stackSize);
+        Stack<Character> stack = new ArrayStack<Character>(stackSize);
         for (int i = 0; i < input.length(); i++) {
             stack.push(input.charAt(i));
         }

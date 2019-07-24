@@ -1,9 +1,11 @@
 package com.lugew.datastructure.study.stack;
 
+import com.lugew.datastructure.study.common.Stack;
+
 public class BracketChecker {
     public static void check(String input) {
         int size = input.length();
-        Stack<Character> stack = new Stack<Character>(size);
+        Stack<Character> stack = new ArrayStack<Character>(size);
         for (int i = 0; i < size; i++) {
             char ch = input.charAt(i);
             switch (ch) {

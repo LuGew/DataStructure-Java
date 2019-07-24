@@ -1,12 +1,14 @@
 package com.lugew.datastructure.study.stack;
 
+import com.lugew.datastructure.study.common.Stack;
+
 public class InToPost {
     private Stack<Character> stack;
     private StringBuilder output = new StringBuilder();
 
     public String transfer(String input) {
         int stackSize = input.length();
-        stack = new Stack<Character>(stackSize);
+        stack = new ArrayStack<Character>(stackSize);
         output = new StringBuilder();
         for (int i = 0; i < stackSize; i++) {
             char ch = input.charAt(i);

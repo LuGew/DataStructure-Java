@@ -1,23 +1,23 @@
 package com.lugew.datastructure.study.stack;
 
-import com.lugew.datastructure.study.common.Display;
+import com.lugew.datastructure.study.common.Stack;
 
 /**
  * 栈
  *
  * @param <T> 泛型
  */
-public class Stack<T> implements Display {
+public class ArrayStack<T> implements Stack<T> {
     private static final int CAPACITY = 50;
     private int maxSize;
     private T[] array;
     private int index;
 
-    public Stack() {
+    public ArrayStack() {
         this(CAPACITY);
     }
 
-    public Stack(int maxSize) {
+    public ArrayStack(int maxSize) {
         if (maxSize > 0) {
             this.maxSize = maxSize;
             array = (T[]) new Object[maxSize];

@@ -1,19 +1,20 @@
 package com.lugew.datastructure.study.queue;
 
 import com.lugew.datastructure.study.common.Display;
+import com.lugew.datastructure.study.common.Queue;
 
 /**
  * 循环队列
  *
  * @author LuGew
  */
-public class Queue<T> implements Display {
+public class ArrayQueue<T> implements Queue<T>, Display {
     private int maxSize;
     private T[] array;
     private int front;
     private int rear;
 
-    public Queue(int maxSize) {
+    public ArrayQueue(int maxSize) {
         this.maxSize = maxSize + 1;
         array = (T[]) new Object[this.maxSize];
         front = 0;
