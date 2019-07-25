@@ -1,6 +1,6 @@
 package com.lugew.datastructure.study.stack;
 
-import com.lugew.datastructure.study.common.Stack;
+import com.lugew.datastructure.util.Stack;
 
 /**
  * 栈实现的字符串反转

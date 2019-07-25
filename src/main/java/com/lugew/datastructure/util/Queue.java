@@ -1,4 +1,4 @@
-package com.lugew.datastructure.study.common;
+package com.lugew.datastructure.util;
 
 /**
  * 队列接口

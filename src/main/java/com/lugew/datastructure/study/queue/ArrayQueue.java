@@ -1,7 +1,7 @@
 package com.lugew.datastructure.study.queue;
 
-import com.lugew.datastructure.study.common.Display;
-import com.lugew.datastructure.study.common.Queue;
+import com.lugew.datastructure.util.Display;
+import com.lugew.datastructure.util.Queue;
 
 /**
  * 循环队列

@@ -1,4 +1,4 @@
-package com.lugew.datastructure.study.common;
+package com.lugew.datastructure.util;
 
 /**
  * 栈接口
@@ -10,11 +10,10 @@ public interface Stack<T> extends Display {
 
     T peek();
 
-    void push(T value);
+    boolean push(T value);
 
     boolean isEmpty();
 
-    boolean isFull();
 
     int size();
 }

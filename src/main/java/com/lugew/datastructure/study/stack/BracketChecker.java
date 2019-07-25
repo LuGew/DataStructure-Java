@@ -1,6 +1,6 @@
 package com.lugew.datastructure.study.stack;
 
-import com.lugew.datastructure.study.common.Stack;
+import com.lugew.datastructure.util.Stack;
 
 public class BracketChecker {
     public static void check(String input) {

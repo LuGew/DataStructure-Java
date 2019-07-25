@@ -1,6 +1,6 @@
 package com.lugew.datastructure.study.stack;
 
-import com.lugew.datastructure.study.common.Stack;
+import com.lugew.datastructure.util.Stack;
 
 /**
  * 栈
@@ -47,10 +47,12 @@ public class ArrayStack<T> implements Stack<T> {
         return null;
     }
 
-    public void push(T value) {
+    public boolean push(T value) {
         if (!isFull()) {
             array[++index] = value;
+            return true;
         }
+        return false;
     }
 
     public boolean isEmpty() {
