@@ -45,11 +45,4 @@ public class FirstLinkedList<T> extends SinglyLinkedList<T> {
         }
 
     }
-
-    @Override
-    public boolean remove(int index) {
-        return false;
-    }
-
-
 }

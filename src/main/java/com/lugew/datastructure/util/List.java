@@ -8,7 +8,7 @@ public interface List<T> extends Display {
 
     boolean remove(T element);
 
-    boolean remove(int index);
+    T remove(int index);
 
     T get(int index);
 

@@ -66,10 +66,7 @@ public class FirstLastLinkedList<T> extends SinglyLinkedList<T> {
         }
     }
 
-    @Override
-    public boolean remove(int index) {
-        return false;
-    }
+
 
 }
 

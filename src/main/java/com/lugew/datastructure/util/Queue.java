@@ -5,16 +5,13 @@ package com.lugew.datastructure.util;
  *
  * @author LuGew
  */
-public interface Queue<T> {
+public interface Queue<T> extends Display {
 
-    void insert(T value);
+    boolean add(T element);
 
     T remove();
 
-
     boolean isEmpty();
-
-    boolean isFull();
 
     int size();
 }
