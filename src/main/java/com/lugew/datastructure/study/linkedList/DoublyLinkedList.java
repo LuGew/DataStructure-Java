@@ -1,8 +1,8 @@
 package com.lugew.datastructure.study.linkedList;
 
 import com.lugew.datastructure.util.Display;
+import com.lugew.datastructure.util.Iterator;
 import com.lugew.datastructure.util.List;
-import com.sun.org.apache.regexp.internal.RE;
 
 /**
  * 双端双向链表
@@ -169,6 +169,51 @@ public class DoublyLinkedList<T> implements List<T> {
             current = current.next;
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ListIterator(this);
+    }
+
+    public class ListIterator implements Iterator<T> {
+        private Node<T> prevoius;
+        private Node<T> current;
+        private List<T> list;
+
+        public ListIterator(List<T> list) {
+            this.list = list;
+            this.reset();
+        }
+
+        public void reset() {
+            current = first;
+            prevoius = null;
+        }
+
+        public boolean hasPrevious() {
+            return current != null && current.previous != null;
+        }
+
+        public T previous() {
+            T element = current.previous.element;
+            current = current.previous;
+            prevoius = current.previous;
+            return element;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null && current.next != null;
+        }
+
+        @Override
+        public T next() {
+            T element = current.next.element;
+            prevoius = current;
+            current = current.next;
+            return element;
+        }
     }
 
     protected class Node<T> implements Display {

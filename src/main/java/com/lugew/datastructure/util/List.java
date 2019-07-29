@@ -3,7 +3,7 @@ package com.lugew.datastructure.util;
 /**
  * 链表接口
  */
-public interface List<T> extends Display {
+public interface List<T> extends Display, Iteratable<T> {
     boolean add(T element);
 
     boolean remove(T element);

@@ -1,6 +1,7 @@
 package com.lugew.datastructure.study.linkedList;
 
 import com.lugew.datastructure.util.Display;
+import com.lugew.datastructure.util.Iterator;
 import com.lugew.datastructure.util.List;
 
 /**
@@ -83,6 +84,37 @@ public abstract class SinglyLinkedList<T> implements List<T>, Display {
             current = current.next;
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ListIterator(this);
+    }
+
+    public class ListIterator implements Iterator<T> {
+        private Node<T> current;
+        private List<T> list;
+
+        public ListIterator(List<T> list) {
+            this.list = list;
+            this.reset();
+        }
+
+        public void reset() {
+            current = first;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null && current.next != null;
+        }
+
+        @Override
+        public T next() {
+            T element = current.next.element;
+            current = current.next;
+            return element;
+        }
     }
 
     protected class Node<T> implements Display {

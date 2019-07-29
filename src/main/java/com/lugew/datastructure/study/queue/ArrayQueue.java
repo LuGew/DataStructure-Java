@@ -22,13 +22,16 @@ public class ArrayQueue<T> implements Queue<T>, Display {
         rear = -1;
     }
 
-    public void insert(T value) {
+    @Override
+    public boolean add(T element) {
         if (rear == maxSize - 1) {
             rear = -1;
         }
-        array[++rear] = value;
+        array[++rear] = element;
+        return true;
     }
 
+    @Override
     public T remove() {
         T temp = array[front++];
         if (front == maxSize) {
@@ -37,7 +40,7 @@ public class ArrayQueue<T> implements Queue<T>, Display {
         return temp;
     }
 
-
+    @Override
     public boolean isEmpty() {
         return (rear + 1 == front) || (front + maxSize - 1 == rear);
     }
@@ -46,6 +49,7 @@ public class ArrayQueue<T> implements Queue<T>, Display {
         return (rear + 2 == front) || (front + maxSize - 2 == rear);
     }
 
+    @Override
     public int size() {
         if (rear >= front) {
             return rear - front + 1;
@@ -54,6 +58,7 @@ public class ArrayQueue<T> implements Queue<T>, Display {
         }
     }
 
+    @Override
     public void display() {
         if (!isEmpty()) {
             if (rear >= front) {
