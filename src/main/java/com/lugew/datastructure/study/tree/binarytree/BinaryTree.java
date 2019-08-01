@@ -100,12 +100,79 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractTree<T> {
                     parent.setRightChild(current.getRightChild());
                 }
             } else {
-
+                Node<T> successor = getSuccessor(current);
+                if (current == root) {
+                    root = successor;
+                } else if (isLeftChild) {
+                    parent.setLeftChild(successor);
+                } else {
+                    parent.setRightChild(successor);
+                }
+                successor.setLeftChild(current.getLeftChild());
             }
         } else {
             return false;
         }
-        return false;
+        return true;
+    }
+
+    private Node<T> getSuccessor(Node<T> deletedNode) {
+        Node<T> successorParent = deletedNode;
+        Node<T> successor = deletedNode;
+        Node<T> current = deletedNode.getRightChild();
+        while (current != null) {
+            successorParent = successor;
+            successor = current;
+            current = current.getLeftChild();
+        }
+        if (successorParent != deletedNode.getRightChild()) {
+            successorParent.setLeftChild(successor.getRightChild());
+            successor.setRightChild(deletedNode.getRightChild());
+        }
+        return successor;
+    }
+
+    @Override
+    public void inorderTraversal(Node<T> root) {
+        if (root != null) {
+            inorderTraversal(root.getLeftChild());
+            System.out.println(root.getData().toString() + " ");
+            inorderTraversal(root.getRightChild());
+        }
+    }
+
+    @Override
+    public void postorderTraversal(Node<T> root) {
+        if (root != null) {
+            postorderTraversal(root.getLeftChild());
+            postorderTraversal(root.getRightChild());
+            System.out.println(root.getData().toString() + " ");
+        }
+    }
+
+    @Override
+    public void preorderTraversal(Node<T> root) {
+        System.out.println(root.getData().toString() + " ");
+        preorderTraversal(root.getLeftChild());
+        preorderTraversal(root.getRightChild());
+    }
+
+    public Node<T> mininum() {
+        Node<T> current = root, minium = root;
+        while (current != null) {
+            minium = current;
+            current = current.getLeftChild();
+        }
+        return minium;
+    }
+
+    public Node<T> maximum() {
+        Node<T> current = root, maximum = root;
+        while (current != null) {
+            maximum = current;
+            current = current.getRightChild();
+        }
+        return maximum;
     }
 
     @Override

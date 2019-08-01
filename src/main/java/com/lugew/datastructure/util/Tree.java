@@ -7,8 +7,8 @@ package com.lugew.datastructure.util;
  * @author LuGew
  * @since 2019/7/31
  */
-public interface Tree<T> extends Display {
-    Node find(T element);
+public interface Tree<T extends Comparable<T>> extends Display {
+    Node<T> find(T element);
 
     boolean add(T element);
 
@@ -17,5 +17,12 @@ public interface Tree<T> extends Display {
     int size();
 
     boolean isEmpty();
+
+    void inorderTraversal(Node<T> node);
+
+    void postorderTraversal(Node<T> node);
+
+    void preorderTraversal(Node<T> node);
+
 
 }
