@@ -14,6 +14,5 @@ public interface Stack<T> extends Display {
 
     boolean isEmpty();
 
-
     int size();
 }
